@@ -16,8 +16,8 @@ conventions: time is `s`, years since a hemispheric cycle's 15° latitude crossi
 
 ### Student
 
-length:
-Terminology I can already use:
+length: short
+Terminology I can already use: solar cycle physics: emergence, hemispheric cycle, alignment coordinate
 
 ### Instructions
 
