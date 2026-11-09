@@ -16,8 +16,8 @@ conventions: time is `s`, years since a hemispheric cycle's 15° latitude crossi
 
 ### Student
 
-length:
-Terminology I can already use:
+length: medium (30-45 minutes)
+Terminology I can already use: Poisson process, event times, sunspot emergence, hemispheric cycle, Fano factor, mean, variance, probability distribution, event rate, latitude, amplitude, negative log-likelihood, simulation, random sampling, and model fitting
 
 ### Instructions
 
