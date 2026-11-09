@@ -16,8 +16,8 @@ conventions: time is `s`, years since a hemispheric cycle's 15° latitude crossi
 
 ### Student
 
-length:
-Terminology I can already use:
+length: medium
+Terminology I can already use: Intensity surface, Drift track, Belt width, Latent variable, Log-likelihood, Partial pooling, Quadrature mesh
 
 ### Instructions
 
