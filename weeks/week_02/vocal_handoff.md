@@ -1,44 +1,61 @@
 ## HANDOFF — ButterflAI 2.0, Week 02
 
-Notebook: `02_rate_1d.ipynb` · Vocabulary session completed · 8 learner turns, including this handoff request
+Notebook: `02_rate_1d.ipynb` · Updated after Task 15 discussion · 10 learner turns, including both handoff requests
 
 HANDOFF\
-turns: 8\
-learns by: contrasts, conceptual examples, and corrective feedback\
+turns: 10\
+learns by: contrasts, conceptual examples, numerical results, and corrective feedback\
 \
-domain: point processes | level: 4 | milestone: compensator and time-rescaling mechanism reached; independent Exp(1) diagnostics not yet demonstrated | anchor: time-rescaling theorem\
+domain: point processes | level: 4 | milestone: compensator and time-rescaling mechanism reached; full Exp(1) diagnostics not yet demonstrated | anchor: time-rescaling theorem\
 inhomogeneous Poisson process | claim: no | prior: none | end: introduced | "no quote"\
 intensity function | claim: no | prior: none | end: deployed | "if the intensity is high, even a few days can produce a relatively large transformed gap"\
-compensator | claim: no | prior: none | end: deployed | "The compensator adds up the fitted intensity between the two events"\
+compensator | claim: no | prior: none | end: deployed | "there is no compensator to penalize the total expected number of events"\
 thinning | claim: no | prior: none | end: unused | "no quote"\
 time-rescaling theorem | claim: no | prior: none | end: introduced | "no quote"\
 other deployed: emergence rate, event-time term, rescaled gap\
-other open: independent exponential gaps, consequences of tied timestamps\
+other open: independence of Exp(1) gaps, tie-handling assumptions, systematic model departures\
 \
-domain: statistical inference | level: 3 | milestone: likelihood decomposition reached; formal goodness-of-fit interpretation not yet demonstrated | anchor: identifiability\
-log-likelihood | claim: yes | prior: correct | end: deployed | "Model A would have the higher log-likelihood"\
-maximum likelihood estimate | claim: no | prior: none | end: unused | "no quote"\
+domain: statistical inference | level: 3 | milestone: likelihood decomposition and missing-compensator failure mechanism reached; MLE derivation not yet independently demonstrated | anchor: maximum likelihood estimate\
+log-likelihood | claim: yes | prior: correct | end: deployed | "when I removed the integral term from the log-likelihood"\
+maximum likelihood estimate | claim: no | prior: none | end: introduced | "no quote"\
 quadrature | claim: no | prior: none | end: introduced | "no quote"\
-unconstrained parameterization | claim: no | prior: none | end: unused | "no quote"\
+unconstrained parameterization | claim: no | prior: none | end: introduced | "no quote"\
 QQ plot | claim: no | prior: none | end: introduced | "no quote"\
 Kolmogorov–Smirnov statistic | claim: no | prior: none | end: introduced | "no quote"\
 identifiability | claim: no | prior: none | end: introduced | "no quote"\
 profile likelihood | claim: no | prior: none | end: introduced | "no quote"\
 other deployed: correlation, random variation\
-other open: isolated versus systematic model departures, fitted-parameter uncertainty\
+other open: finite versus unbounded likelihood, fixed-window estimation, parameter uncertainty\
 \
-domain: solar cycle physics | level: 3 | milestone: amplitude–event-count association interpreted; width interpretation remains provisional | anchor: fitted width\
+domain: solar cycle physics | level: 3 | milestone: amplitude–event-count association interpreted; fitted-width interpretation remains provisional | anchor: fitted width\
 emergence rate | claim: yes | prior: correct | end: deployed | "it predicts a high emergence rate when many sunspot groups are actually observed"\
 onset | claim: no | prior: none | end: unused | "no quote"\
 other deployed: sunspot groups, hemispheric cycles, amplitude\
 other open: physical interpretation of fitted width and onset
 
-### Key observations to carry forward
+### Latest experimental result
 
-The learner correctly decomposed the point-process log-likelihood into its event-time reward and compensator penalty. They initially confused short calendar-time gaps with small transformed gaps, then independently corrected the distinction: high fitted intensity causes a given interval to accumulate more compensator, producing a larger rescaled gap.
+In Task 15, the learner reported:
 
-They also recognized that one unusually large transformed gap does not prove model misspecification because random variation remains possible.
+| Quantity                   | Correct fitter | Broken fitter                 |
+| -------------------------- | -------------- | ----------------------------- |
+| Fitted amplitude parameter | 4.59           | \\(9.54\times10^{83}\\)       |
+| Predicted event count      | 1,590          | Infinity (numerical overflow) |
 
-Their reported correlations were \\(r=0.941\\) for event count versus amplitude and \\(r=-0.301\\) for fitted width versus amplitude. The stronger event-count association is a reasonable descriptive conclusion; interpreting fitted width physically requires examining identifiability.
+The learner correctly hypothesized that removing the compensator allows the event-time term to reward ever-increasing intensity without penalizing the expected total event count.
 
-Recommended next teaching step: Ask the learner to explain what systematic departures from an Exponential(1) distribution would mean in a QQ plot, then transition to identifiability and profile likelihood.
+The tutor explained that for fixed rate shape,
+
+\\[ \ell(a)=n\log a-aG+C, \qquad G=\int\_{-6}^{11}g(s)\\,ds, \\]
+
+so the correct maximum is \\(\hat a=n/G\\), whereas removing the integral leaves \\(n\log a+C\\), which increases without bound.
+
+Important distinction: The learner proposed the correct mechanism, but has not yet independently derived the maximum or explained the optimizer's behavior using derivatives.
+
+### Recommended next step
+
+Return to the unanswered question:
+
+> If we restore the compensator but integrate only over the active years, excluding quiet years near the boundaries, is the resulting maximum likelihood estimate valid for the original 17-year observation window?
+
+Then move toward identifiability and profile likelihood, particularly whether fitted onset and width are sufficiently constrained to support physical interpretation.
