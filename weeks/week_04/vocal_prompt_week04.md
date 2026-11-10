@@ -16,8 +16,8 @@ conventions: time is `s`, years since a hemispheric cycle's 15° latitude crossi
 
 ### Student
 
-length:
-Terminology I can already use:
+length: medium
+Terminology I can already use: parameterize, compare, constrain, optimize, ablation, leaderboard, generalization, overfitting, model selection, held-out likelihood, negative log-likelihood (NLL), paired gain, standard error, hemicycle, latitude profile, belt width, amplitude-dependent width, joint model, variant, baseline, time-rescaling, KS statistic, metric gaming
 
 ### Instructions
 
